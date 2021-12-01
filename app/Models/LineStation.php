@@ -17,11 +17,11 @@ class LineStation extends Pivot
 
     public function line()
     {
-        $this->belongsTo(Line::class);
+        return $this->belongsTo(Line::class);
     }
 
     public function station()
     {
-        $this->belongsTo(Station::class);
+        return $this->belongsTo(Station::class);
     }
 }

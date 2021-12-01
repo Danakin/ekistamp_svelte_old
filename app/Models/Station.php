@@ -22,12 +22,12 @@ class Station extends Model
 
     public function prefecture()
     {
-        $this->belongsTo(Prefecture::class);
+        return $this->belongsTo(Prefecture::class);
     }
 
     public function city()
     {
-        $this->belongsTo(City::class);
+        return $this->belongsTo(City::class);
     }
 
     public function street()

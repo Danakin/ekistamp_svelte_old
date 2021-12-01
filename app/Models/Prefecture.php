@@ -37,7 +37,7 @@ class Prefecture extends Model
         return $this->hasMany(Line::class);
     }
 
-    public function station()
+    public function stations()
     {
         return $this->hasMany(Station::class);
     }
