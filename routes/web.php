@@ -15,6 +15,7 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', function () {
@@ -24,5 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/about', function () {
         return Inertia::render('About');
     });
+
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
