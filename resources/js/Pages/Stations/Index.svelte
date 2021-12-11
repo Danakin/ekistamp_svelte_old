@@ -48,7 +48,7 @@
         <tbody>
 
         {#each stations.data as station}
-            <tr>
+            <tr class="odd:bg-gray-200">
                 <td>{station.id}</td>
                 <td>
                     <ruby>
