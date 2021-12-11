@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStationRequest;
 use App\Http\Requests\UpdateStationRequest;
 use App\Models\Station;
+use Inertia\Inertia;
 
 class StationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
-        //
+        return Inertia::render('Stations/Index', [
+            'stations' => Station::query()
+                ->with(['prefecture', 'city', 'lines'])
+                ->orderBy('romaji')
+                ->paginate(25),
+        ]);
     }
 
     /**

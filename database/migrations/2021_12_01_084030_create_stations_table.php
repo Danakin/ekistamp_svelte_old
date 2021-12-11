@@ -26,6 +26,7 @@ class CreateStationsTable extends Migration
             $table->string('memo');
             $table->double('latitude');
             $table->double('altitude');
+            $table->boolean('has_stamp')->default(FALSE);
             $table->timestamps();
         });
     }
