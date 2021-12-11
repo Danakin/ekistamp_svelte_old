@@ -1,5 +1,5 @@
 <script>
-    import {selectedPrefecture, selectedCity} from '@/Pages/Search/searchStore';
+    import {selectedPrefecture, selectedCity} from '@/Pages/Stations/searchStore';
 
     let cities = [];
 

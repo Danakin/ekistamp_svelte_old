@@ -1,5 +1,5 @@
 <script>
-    import {selectedPrefecture} from '@/Pages/Search/searchStore';
+    import {selectedPrefecture} from '@/Pages/Stations/searchStore';
 
     let prefectures = [];
     axios

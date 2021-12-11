@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStationRequest;
 use App\Http\Requests\UpdateStationRequest;
 use App\Models\Station;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class StationController extends Controller
@@ -19,8 +20,14 @@ class StationController extends Controller
         return Inertia::render('Stations/Index', [
             'stations' => Station::query()
                 ->with(['prefecture', 'city', 'lines'])
+                ->when(request()->input('station'), function ($query, $value) {
+                    $query->where('name', 'like', "%{$value}%");
+                    $query->orWhere('hiragana', 'like', "%{$value}%");
+                    $query->orWhere('romaji', 'like', "%{$value}%");
+                })
                 ->orderBy('romaji')
                 ->paginate(25),
+            'filters' => request()->only(['station']),
         ]);
     }
 
