@@ -21,7 +21,7 @@ class Stamp extends Model
         'is_approved',
     ];
 
-    public function user() : BelongsTo
+    public function registeredBy() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -34,5 +34,10 @@ class Stamp extends Model
     public function company() : BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

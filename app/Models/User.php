@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Stamp::class);
     }
+
+    public function stamps()
+    {
+        return $this->belongsToMany(Stamp::class);
+    }
 }
