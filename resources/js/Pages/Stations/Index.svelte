@@ -31,13 +31,13 @@
 </script>
 
 <section class="flex flex-col space-y-2 mb-4" id="search">
-    <div class="flex flex-wrap">
-        <label class="w-full sm:w-3/12" for="station_name">Station: </label>
+    <div class="flex flex-wrap items-center">
+        <label class="w-full w-24" for="station_name">Station: </label>
         <input bind:value={stationName} class="flex-1 border border-gray-400 focus:border-blue-400 outline-none px-4 py-2 rounded"
                id="station_name" name="station_name" type="text" />
     </div>
-    <div class="flex flex-wrap">
-        <label class="w-full sm:w-3/12" for="prefecture_name">Prefecture: </label>
+    <div class="flex flex-wrap items-center">
+        <label class="w-full w-24" for="prefecture_name">Prefecture: </label>
         <input bind:value={prefectureName} class="flex-1 border border-gray-400 focus:border-blue-400 outline-none px-4 py-2 rounded"
                id="prefecture_name" name="prefecture_name" type="text" />
     </div>

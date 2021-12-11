@@ -17,23 +17,28 @@
     };
 </script>
 
-Login
 
-<form>
-    <section>
+<form class="space-y-4">
+    <section class="text-lg font-bold">Login</section>
+    <section class="flex flex-col">
         <label for="email">Email</label>
-        <input bind:value={$form.email} type="email" id="email" name="email" />
+        <input class="border border-gray-400 focus:border-blue-400 outline-none rounded px-4 py-2" bind:value={$form.email} type="email" id="email" name="email" />
         {#if $form.errors.email}
-            { $form.errors.email }
+            <div class="text-sm text-red-500">
+                { $form.errors.email }
+            </div>
         {/if}
     </section>
-    <section>
+    <section class="flex flex-col">
         <label for="password">Password</label>
-        <input bind:value={$form.password} type="password" id="password" name="password" />
+        <input class="border border-gray-400 focus:border-blue-400 outline-none rounded px-4 py-2" bind:value={$form.password} type="password" id="password" name="password" />
         {#if $form.errors.password}
-            { $form.errors.password }
+            <div class="text-sm text-red-500">
+                { $form.errors.password }
+            </div>
         {/if}
     </section>
-
-    <button on:click|preventDefault={submit} disabled={$form.processing}>Submit</button>
+    <section class="flex justify-end">
+        <button class="rounded px-4 py-2 text-white bg-green-700 hover:bg-green-500" on:click|preventDefault={submit} disabled={$form.processing}>Login</button>
+    </section>
 </form>
