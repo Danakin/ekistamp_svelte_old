@@ -22,16 +22,16 @@ class StationController extends Controller
                 ->with(['prefecture', 'city', 'lines', 'stamps'])
                 ->when(request()->input('station'), function ($query, $value) {
                     $search = Str::lower($value);
-                    $query->where('name', 'like', "%{$search}%");
-                    $query->orWhere('hiragana', 'like', "%{$search}%");
-                    $query->orWhere('romaji', 'like', "%{$search}%");
+                    $query->where('name', 'like', "%$search%");
+                    $query->orWhere('hiragana', 'like', "%$search%");
+                    $query->orWhere('romaji', 'like', "%$search%");
                 })
                 ->when(request()->input('prefecture'), function ($query, $value) {
                     $query->whereHas('prefecture', function ($query) use ($value) {
                         $search = Str::lower($value);
-                        $query->where('name', 'like', "%{$search}%");
-                        $query->orWhere('hiragana', 'like', "%{$search}%");
-                        $query->orWhere('romaji', 'like', "%{$search}%");
+                        $query->where('name', 'like', "%$search%");
+                        $query->orWhere('hiragana', 'like', "%$search%");
+                        $query->orWhere('romaji', 'like', "%$search%");
                     });
                 })
                 ->orderBy('romaji')
