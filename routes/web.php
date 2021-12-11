@@ -17,16 +17,16 @@ use Inertia\Inertia;
 
 //Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
-Route::get('/stations', [\App\Http\Controllers\StationController::class, 'index'])->name('stations.index');
+Route::resource('/stations', \App\Http\Controllers\StationController::class)->only(['index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', function () {
         return Inertia::render('Welcome');
-    });
+    })->name('home');
 
     Route::get('/about', function () {
         return Inertia::render('About');
-    });
+    })->name('about');
 
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });

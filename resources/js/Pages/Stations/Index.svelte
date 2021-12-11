@@ -29,8 +29,10 @@
 </script>
 
 <section class="flex flex-col" id="search">
-    <label for="station_name">Station</label>
-    <input type="text" id="station_name" name="station_name" bind:value={stationName} />
+    <div>
+        <label for="station_name">Station: </label>
+        <input type="text" id="station_name" name="station_name" bind:value={stationName} />
+    </div>
 </section>
 
 <section class="flex flex-col" id="stations">
@@ -48,9 +50,9 @@
         <tbody>
 
         {#each stations.data as station}
-            <tr class="odd:bg-gray-200">
-                <td>{station.id}</td>
-                <td>
+            <tr class="divide-x divide-white even:divide-gray-200 odd:bg-gray-200">
+                <td class="p-2">{station.id}</td>
+                <td class="p-2">
                     <ruby>
                         {station.name}
                         <rp>(</rp>
@@ -59,18 +61,18 @@
                     </ruby>
                     <div class="text-xs capitalize">{station.romaji}</div>
                 </td>
-                <td class="capitalize">
+                <td class="p-2 capitalize">
                     {station.prefecture.name}
                     <div class="text-xs capitalize">({station.prefecture.romaji})</div>
                 </td>
-                <td class="capitalize">
+                <td class="p-2 capitalize">
                     {station.city.name}
                     <div class="text-xs capitalize">({station.city.romaji})</div>
                 </td>
-                <td>
+                <td class="p-2">
                     {station.lines.map(line => line.name).join(',')}
                 </td>
-                <td>{station.has_stamp}</td>
+                <td class="p-2">{station.has_stamp}</td>
             </tr>
         {/each}
         </tbody>
