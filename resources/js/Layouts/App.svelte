@@ -4,6 +4,6 @@
 
 <Navigation></Navigation>
 
-<main class="container mx-auto mt-16">
+<main class="p-4 sm:p-0 container mx-auto sm:mt-16">
     <slot />
 </main>
