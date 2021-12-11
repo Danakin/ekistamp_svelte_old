@@ -8,7 +8,7 @@
     import {Inertia} from '@inertiajs/inertia';
     import {Link} from '@inertiajs/inertia-svelte';
 
-    import debounce from '@/Helper/debounce'
+    import debounce from '@/Helper/debounce';
 
     import Pagination from '@/Partials/Pagination.svelte';
 
@@ -26,18 +26,20 @@
         },
         {
             preserveState: true,
-        }
+        },
     ), 500);
 </script>
 
-<section class="flex flex-col" id="search">
-    <div>
-        <label for="station_name">Station: </label>
-        <input class="border border-gray-200 focus:border-gray-400 outline-none" type="text" id="station_name" name="station_name" bind:value={stationName} />
+<section class="flex flex-col space-y-2 mb-4" id="search">
+    <div class="flex flex-wrap">
+        <label class="w-full sm:w-3/12" for="station_name">Station: </label>
+        <input bind:value={stationName} class="flex-1 border border-gray-400 focus:border-blue-400 outline-none px-4 py-2 rounded"
+               id="station_name" name="station_name" type="text" />
     </div>
-    <div>
-        <label for="prefecture_name">Prefecture: </label>
-        <input type="text" id="prefecture_name" name="prefecture_name" bind:value={prefectureName} />
+    <div class="flex flex-wrap">
+        <label class="w-full sm:w-3/12" for="prefecture_name">Prefecture: </label>
+        <input bind:value={prefectureName} class="flex-1 border border-gray-400 focus:border-blue-400 outline-none px-4 py-2 rounded"
+               id="prefecture_name" name="prefecture_name" type="text" />
     </div>
 </section>
 
