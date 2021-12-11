@@ -39,4 +39,9 @@ class Station extends Model
     {
         return $this->belongsToMany(Line::class)->withPivot('order');
     }
+
+    public function stamps()
+    {
+        return $this->hasMany(Stamp::class);
+    }
 }

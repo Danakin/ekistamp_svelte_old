@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStationRequest;
 use App\Http\Requests\UpdateStationRequest;
 use App\Models\Station;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class StationController extends Controller
@@ -18,17 +19,19 @@ class StationController extends Controller
     {
         return Inertia::render('Stations/Index', [
             'stations' => Station::query()
-                ->with(['prefecture', 'city', 'lines'])
+                ->with(['prefecture', 'city', 'lines', 'stamps'])
                 ->when(request()->input('station'), function ($query, $value) {
-                    $query->where('name', 'like', "%{$value}%");
-                    $query->orWhere('hiragana', 'like', "%{$value}%");
-                    $query->orWhere('romaji', 'like', "%{$value}%");
+                    $search = Str::lower($value);
+                    $query->where('name', 'like', "%{$search}%");
+                    $query->orWhere('hiragana', 'like', "%{$search}%");
+                    $query->orWhere('romaji', 'like', "%{$search}%");
                 })
                 ->when(request()->input('prefecture'), function ($query, $value) {
                     $query->whereHas('prefecture', function ($query) use ($value) {
-                        $query->where('name', 'like', "%{$value}%");
-                        $query->orWhere('hiragana', 'like', "%{$value}%");
-                        $query->orWhere('romaji', 'like', "%{$value}%");
+                        $search = Str::lower($value);
+                        $query->where('name', 'like', "%{$search}%");
+                        $query->orWhere('hiragana', 'like', "%{$search}%");
+                        $query->orWhere('romaji', 'like', "%{$search}%");
                     });
                 })
                 ->orderBy('romaji')

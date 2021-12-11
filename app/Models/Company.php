@@ -17,4 +17,9 @@ class Company extends Model
     {
         return $this->hasMany(Line::class);
     }
+
+    public function stamps()
+    {
+        return $this->hasMany(Stamp::class);
+    }
 }
