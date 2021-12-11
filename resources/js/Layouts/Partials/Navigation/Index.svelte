@@ -45,7 +45,7 @@
         <NavLink href="{window.route('dashboard')}">Dashboard</NavLink>
         <NavLink href="{window.route('stations.index')}">Stations</NavLink>
     </section>
-    <section class="flex" id="account-section">
+    <section class="flex flex-col sm:flex-row" id="account-section">
         <NavLink href="{window.route('logout')}" method="POST">Logout</NavLink>
     </section>
 </nav>
