@@ -16,11 +16,13 @@
     export let stations;
 
     let stationName = filters.station;
+    let prefectureName = filters.prefecture;
 
     $: debounce(() => Inertia.get(
         '/stations',
         {
             station: stationName,
+            prefecture: prefectureName,
         },
         {
             preserveState: true,
@@ -31,7 +33,11 @@
 <section class="flex flex-col" id="search">
     <div>
         <label for="station_name">Station: </label>
-        <input type="text" id="station_name" name="station_name" bind:value={stationName} />
+        <input class="border border-gray-200 focus:border-gray-400 outline-none" type="text" id="station_name" name="station_name" bind:value={stationName} />
+    </div>
+    <div>
+        <label for="prefecture_name">Prefecture: </label>
+        <input type="text" id="prefecture_name" name="prefecture_name" bind:value={prefectureName} />
     </div>
 </section>
 
