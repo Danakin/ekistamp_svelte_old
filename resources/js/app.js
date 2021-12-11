@@ -12,7 +12,7 @@ createInertiaApp({
     id: 'app',
     resolve: name => require(`./Pages/${name}.svelte`),
     setup({ el, App, props }) {
-        new App({ target: el, props })
+        new App({ target: el, props });
     },
 })
 

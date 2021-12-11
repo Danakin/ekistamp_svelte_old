@@ -1,5 +1,9 @@
 <script>
     import NavLink from '@/Layouts/Partials/Navigation/Partials/NavLink.svelte';
+    import { page } from '@inertiajs/inertia-svelte'
+    let user = $page.props?.auth?.user ?? undefined;
+
+    console.log(user);
 </script>
 
 <nav class="bg-white fixed top-0 left-0 right-0 h-12 shadow flex justify-between">

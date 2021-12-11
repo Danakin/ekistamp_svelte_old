@@ -5,7 +5,6 @@
 
 <script>
     export let user;
-    console.log(user);
     const name = user?.name || 'unknown';
 </script>
 
