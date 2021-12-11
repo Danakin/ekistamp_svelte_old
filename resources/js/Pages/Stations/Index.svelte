@@ -8,6 +8,8 @@
     import {Inertia} from '@inertiajs/inertia';
     import {Link} from '@inertiajs/inertia-svelte';
 
+    import debounce from '@/Helper/debounce'
+
     import Pagination from '@/Partials/Pagination.svelte';
 
     export let filters;
@@ -15,26 +17,15 @@
 
     let stationName = filters.station;
 
-    let timer;
-    const debounce = e => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            Inertia.get(
-                '/stations',
-                {
-                    station: e,
-                },
-                {
-                    preserveState: true,
-                }
-            );
-        }, 500)
-    }
-    $: debounce(stationName);
-
-    function handleDebounce(v) {
-        console.log(v)
-    }
+    $: debounce(() => Inertia.get(
+        '/stations',
+        {
+            station: stationName,
+        },
+        {
+            preserveState: true,
+        }
+    ), 500);
 </script>
 
 <section class="flex flex-col" id="search">
