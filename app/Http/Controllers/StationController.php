@@ -51,6 +51,7 @@ class StationController extends Controller
      */
     public function show(Station $station)
     {
+        $station->load(['prefecture', 'city', 'street', 'lines', 'stamps']);
         return Inertia::render('Stations/Show', [
             'station' => $station,
         ]);
