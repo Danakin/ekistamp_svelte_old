@@ -2,7 +2,7 @@
     import NavLink from '@/Layouts/Partials/Navigation/Partials/NavLink.svelte';
     import {page} from '@inertiajs/inertia-svelte';
 
-    let user = $page.props?.auth?.user ?? undefined;
+    let user = $page.props?.user ?? undefined;
     let open = false;
 
     console.log(user);
@@ -46,6 +46,13 @@
         <NavLink href="{window.route('stations.index')}">Stations</NavLink>
     </section>
     <section class="flex flex-col sm:flex-row" id="account-section">
-        <NavLink href="{window.route('logout')}" method="POST">Logout</NavLink>
+        <NavLink href="{window.route('logout')}" method="POST">
+            <svg class="h-6 w-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2" />
+            </svg>
+            Logout
+        </NavLink>
     </section>
 </nav>

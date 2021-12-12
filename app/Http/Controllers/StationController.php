@@ -10,12 +10,7 @@ use Inertia\Inertia;
 
 class StationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
-     */
-    public function index()
+    public function index() : \Inertia\Response
     {
         return Inertia::render('Stations/Index', [
             'stations' => Station::query()
@@ -42,13 +37,6 @@ class StationController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\StoreStationRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreStationRequest $request)
     {
         //
@@ -63,7 +51,9 @@ class StationController extends Controller
      */
     public function show(Station $station)
     {
-        //
+        return Inertia::render('Stations/Show', [
+            'station' => $station,
+        ]);
     }
 
     /**

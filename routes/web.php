@@ -17,7 +17,7 @@ use Inertia\Inertia;
 
 //Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
-Route::resource('/stations', \App\Http\Controllers\StationController::class)->only(['index']);
+Route::resource('/stations', \App\Http\Controllers\StationController::class)->only(['index', 'show']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', function () {
