@@ -1,5 +1,5 @@
 <script context="module">
-    import Layout from '@/Layouts/Auth.svelte'
+    import Layout from '@/Layouts/App.svelte'
     export const layout = Layout
 </script>
 
