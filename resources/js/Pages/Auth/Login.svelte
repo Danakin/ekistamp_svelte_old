@@ -6,6 +6,7 @@
 <script>
     import { Inertia } from '@inertiajs/inertia';
     import { useForm } from '@inertiajs/inertia-svelte';
+    import {user} from '@/Stores/userStore';
 
     let form = useForm({
         email: '',
@@ -13,7 +14,14 @@
     });
 
     let submit = () => {
-        $form.post(route('login'));
+        $form.post(
+            route('login'),
+            {
+                onSuccess: (page) => {
+                    user.update(value => page.props?.user || null);
+                }
+            }
+        );
     };
 </script>
 
