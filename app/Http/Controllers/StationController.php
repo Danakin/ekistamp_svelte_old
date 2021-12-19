@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStationRequest;
 use App\Http\Requests\UpdateStationRequest;
-use App\Models\Stamp;
 use App\Models\StampUser;
 use App\Models\Station;
 use Illuminate\Support\Str;
@@ -46,13 +45,22 @@ class StationController extends Controller
 
     public function show(Station $station) : \Inertia\Response
     {
-        $station->load(['prefecture', 'city', 'street', 'lines', 'stamps', 'lines.company']);
+        $station->load([
+            'prefecture',
+            'city',
+            'street',
+            'lines',
+            'stamps',
+            'lines.company',
+            'lines.stations' => function ($query) {
+                $query->orderByPivot('order');
+            },
+        ]);
         if (auth()->check()) {
             $userStamps = StampUser::query()
                 ->where('user_id', auth()->id())
                 ->whereIn('stamp_id', $station->stamps()->pluck('id')->toArray())
-                ->get();
-            ;
+                ->get();;
         }
 
         return Inertia::render('Stations/Show', [
