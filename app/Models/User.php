@@ -39,12 +39,17 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function registeredStamps()
+    public function roles() : \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function registeredStamps() : \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Stamp::class);
     }
 
-    public function stamps()
+    public function stamps() : \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Stamp::class);
     }
